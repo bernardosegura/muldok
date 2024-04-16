@@ -1,0 +1,39 @@
+<h2 style="float: left;">Servicios en <b style="color: #0075b6;">{servername}</b></h2>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center;">ACCIÓN</th>
+      <th style="text-align: center;">NOMBRE</th>
+      <th style="text-align: center;">CREADO</th>
+      <th style="text-align: center;">ESTADO</th>
+      <!--th style="text-align: center;">PUERTO</th-->
+      <th style="text-align: center;">API</th>
+    </tr>
+  </thead>
+  <tbody id="tbodyPs">
+  </tbody>
+</table>
+<form id="frm_descargar" action="/muldok/app/log/descargar/" target="_blank" method="GET"></form>
+<div id="dialog-log" class="dialog-container" style="max-width: 80%;">
+  <div class="dialog-title">Log de <b id="sevicioname" style="color: #0075b6;"></b> en {servername}</div>
+  <div class="dialog-content" id="dialog-log-mensaje" style="max-height: 475px; overflow: auto;"></div>
+  <div class="dialog-buttons" style="text-align: right;">
+    <button id="dialog-alert-btnDescargar" class="primary" onclick="document.getElementById('frm_descargar').submit();">Descargar</button>
+    <button id="dialog-log-btnCerrar" class="btn" onclick="closeDialog('dialog-log')">Cerrar</button>
+  </div>
+</div>
+<div id="dialog-confirm" class="dialog-container">
+  <div class="dialog-title">Servicios en <b style="color: #0075b6;">{servername}</b></div>
+  <div class="dialog-content" id="dialog-confirm-mensaje"></div>
+  <div class="dialog-buttons" style="text-align: right;">
+    <button id="dialog-confirm-btnOk" class="btn btn-danger" onclick="">Si</button>
+    <button id="dialog-confirm-btnCancel" class="btn" onclick="closeDialog('dialog-confirm')">No</button>
+  </div>
+</div>
+<div id="dialog-alert" class="dialog-container">
+  <div class="dialog-title">Servicios en <b style="color: #0075b6;">{servername}</b></div>
+  <div class="dialog-content" id="dialog-alert-mensaje"></div>
+  <div class="dialog-buttons" style="text-align: right;">
+    <button id="dialog-alert-btnOk" class="primary" onclick="closeDialog('dialog-alert')">Aceptar</button>
+  </div>
+</div>

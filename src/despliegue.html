@@ -1,0 +1,52 @@
+<h2>Cargar y Desplegar Servicio</h2>
+<table>
+    <thead>
+      <tr>
+        <th colspan="5">
+          <form id="id_frmupl" action="/muldok/app/" method="POST" enctype="multipart/form-data">
+            <label for="archivo" class="custom-file-upload">Examinar</label>
+            <input id="archivo" type="file" name="servicio" accept=".jar" onchange="cargarJAR(this.files[0].name); document.getElementById('hdn_nom_jar_srv').value = this.files[0].name; document.getElementById('nameFile').innerHTML='<b>Archivo: </b>'+this.files[0].name">
+            <button type="button" class="btn btn-secondary" onclick="entregar()"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg_load" style="display: none; position: relative; top: 2px;" width="14" height="14" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><path d="M10 50A40 40 0 0 0 90 50A40 46 0 0 1 10 50" fill="#FFF" stroke="none"><animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 51;360 50 51"></animateTransform></path></svg> <b>Desplegar</b></button>
+          </form>
+        </th>
+      </tr>
+      <!--tr>
+        <th colspan="5">
+          <a href="#" class="btn" onclick="desplegar()">Desplegar</a>
+        </th>
+      </tr-->
+      <tr>
+        <th>Nombre de Servicio</th>
+        <th>Versión de Servicio</th>
+        <th>Versión de MuleSoft</th>
+        <th>Puertos Interno</th>
+        <th>Variables de Entorno</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="text" id="txt_nomnre_srv" class="textbox" placeholder="" value=""></td>
+        <td><input type="text" id="txt_version_srv" class="textbox" placeholder="0.0.1" value=""></td>
+        <td><input type="text" id="txt_version_mule" class="textbox" placeholder="4.5.2" value="{version_mule}"></td>
+        <td><input type="text" id="txt_puerto_int_srv" class="textbox" placeholder="8081" value=""></td>
+        <td><input type="text" id="txt_env_vars_srv" class="textbox" placeholder="env=dev config=dbdev ..." value=""></td>
+      </tr>
+      <tr>
+        <th colspan="5">
+          <label id="nameFile" style="font-weight: normal;"><b>Archivo: </b></label>
+          <input type="hidden" id="hdn_nom_jar_srv" value="">
+        </th>
+      </tr>
+      <!--tr>
+        <td colspan="5"><b>Archivo Cargado: </b><label id="desp_jar">{nom_jar_srv}</label></td>
+      </tr-->
+    </tbody>
+  </table>
+</div>
+<div id="dialog-alert" class="dialog-container">
+<div class="dialog-title">Desplegar Servicio</div>
+<div class="dialog-content" id="dialog-alert-mensaje"></div>
+<div class="dialog-buttons" style="text-align: right;">
+  <button id="dialog-alert-btnServicios" class="primary" onclick="closeDialog('dialog-alert'); get_servicios();" style="display: none;">Ir a Servicios</button>
+  <button id="dialog-alert-btnOk" class="primary" onclick="document.getElementById('svg_load').style.display = 'none'; closeDialog('dialog-alert');">Aceptar</button>
+</div>

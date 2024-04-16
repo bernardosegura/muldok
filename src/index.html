@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--link rel="icon" type="image/x-icon" href="favicon.ico"-->
+  <!--link rel="icon" href="favicon.png" type="image/png"-->
+  <script type="text/javascript" src="js/app.js"></script>
+  <title>MulDok</title>
+  <style type="text/css"></style>
+</head>
+<body>
+ <div class="navbar">
+    <div>
+      <label id="servername"></label>
+      <li id="logo"></li>
+      <li class="submenu-parent">
+        <a title="Servidor Administrado" href="#" onmouseenter="cleanSMenu()">MulDok <labe id="lbl_ver"></label></a>
+        <ul class="sub-menu">
+          <li><a title="Esta acción termina la aplicacion del servidor administrado." href="#" onclick="appExit()">&nbsp;&nbsp;Cerrar Aplicación &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+        </ul>
+      </li>
+      <li class="submenu-parent" onmouseenter="cleanSMenu()" onclick="despliegue(); limpiarDespliegue();"><a href="#">Desplegar</a></li>
+      <li class="submenu-parent" onmouseenter="cleanSMenu()" onclick="get_servicios()"><a href="#">Servicios</a></li>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>	
+  <div class="container" id="container"></div> 
+  
+  <input type="hidden" id="hdn_version_mule" value="<--version_mule-->">
+</body>
+</html>
