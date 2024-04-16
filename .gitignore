@@ -129,11 +129,12 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# evitar duplicidad
-src/apiReg.json
+# duplicidad
+apiReg.json
 src/bapu.exe
 src/bapu
 src/package-lock.json
 src/muldok.exe
 src/muldok
-src/jarup
+jarup
+*zip
