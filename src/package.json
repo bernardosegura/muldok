@@ -4,15 +4,15 @@
   "description": "Administrador de Servicios MulSoft en Docker, de manera local",
   "main": "main.js",
   "scripts": {
-	"start": "node main.js",  
-	"bwin": "./node_modules/.bin/pkg --targets windows tmpmain.js --output muldok.exe && rm tmpmain.js",
-  "build:windows": "node build.js && npm run bwin",
-  "blinux": "./node_modules/.bin/pkg --targets linux tmpmain.js --output muldok && rm tmpmain.js",    
-  "build:linux": "node build.js && npm run blinux",
-  "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node main.js",
+    "bwin": "./node_modules/.bin/pkg --targets windows tmpmain.js --output muldok.exe && rm tmpmain.js",
+    "build:windows": "node build.js && npm run bwin",
+    "blinux": "./node_modules/.bin/pkg --targets linux tmpmain.js --output muldok && rm tmpmain.js",
+    "build:linux": "node build.js && npm run blinux",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Bernardo Manuel Segura Muñoz",
-  "license": "ISC",
+  "license": "GNU General Public License v2.0",
   "dependencies": {
     "express": "^4.19.2",
     "multer": "^1.4.5-lts.1",
