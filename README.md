@@ -4,7 +4,7 @@ Surge como respuesta a la necesidad de ejecutar múltiples servicios de Mulesoft
 
 Es importante destacar que MulDok está diseñado específicamente para su uso en entornos de desarrollo y pruebas locales, donde los servicios se ejecutan en contenedores Docker. No se recomienda su implementación en entornos productivos.
 
-Se puede ejecutar mediante el [binario](https://github.com/bernardosegura/CAD/releases/tag/v0.2-Beta) ya compilado y listo para usar tanto en Windows 💻 y Linux 🐧.
+Se puede ejecutar mediante el [binario](https://github.com/bernardosegura/muldok/tree/master/release) ya compilado y listo para usar tanto en Windows 💻 y Linux 🐧.
 
 ### Instalar dependencias
 ```bash
