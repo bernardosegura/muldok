@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:crypto="http://www.mulesoft.org/schema/mule/crypto"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/crypto http://www.mulesoft.org/schema/mule/crypto/current/mule-crypto.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f8eece41-40d3-46ed-b934-293d7491ad3d" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<crypto:jce-config name="Crypto_Jce" doc:name="Crypto Jce" doc:id="033cbf6a-ff0b-42d2-be6c-6287e697d7e2" keystore="security/keystore.jks" type="PKCS12" password="php-mulesoft" >
+		<crypto:jce-key-infos >
+			<crypto:jce-asymmetric-key-info keyId="id_RSA_Privado" alias="cifrado" password="php-mulesoft" />
+			<crypto:jce-asymmetric-key-info keyId="id_RSA_Publico" alias="cifrado" />
+		</crypto:jce-key-infos>
+	</crypto:jce-config>
+	<flow name="cifradorsaFlow" doc:id="9be5961d-6bd6-49b7-8cfe-d56346041c5e" >
+		<http:listener doc:name="Listener" doc:id="26d3f557-e04d-4314-a1e3-eab6c8b7f6ab" path="/cifrado" config-ref="HTTP_Listener_config"/>
+		<crypto:jce-decrypt doc:name="Jce decrypt" doc:id="b195fe2d-6657-4921-bb85-79f6d32253a0" config-ref="Crypto_Jce" cipher="RSA/ECB/PKCS1Padding" keyId="id_RSA_Privado">
+			<crypto:content ><![CDATA[#[dw::core::Binaries::fromBase64(attributes.headers['authorization'])]]]></crypto:content>
+		</crypto:jce-decrypt>
+		<set-variable value="#[java!cifradorsa::Multiplicar::pordos(dw::util::Coercions::toNumber(payload))]" doc:name="Set Variable" doc:id="c1eeca04-1cb3-4dfc-a052-a73dba893144" variableName="numero"/>
+		<crypto:jce-encrypt doc:name="Jce encrypt" doc:id="d3bba1a0-022c-4052-a742-1336853f30c1" config-ref="Crypto_Jce" cipher="RSA/ECB/PKCS1Padding" keyId="id_RSA_Publico">
+			<crypto:content ><![CDATA[#[dw::util::Coercions::toString(vars.numero)]]]></crypto:content>
+		</crypto:jce-encrypt>
+		<ee:transform doc:name="Transform Message" doc:id="d249338a-38fe-40ce-af55-cdf037020b2b" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	resultado: dw::core::Binaries::toBase64(payload)	
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

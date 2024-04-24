@@ -1,6 +1,6 @@
 {
   "name": "muldok",
-  "version": "1.0.20240415",
+  "version": "1.0.42404202",
   "description": "Administrador de Servicios MulSoft en Docker, de manera local",
   "main": "main.js",
   "scripts": {
