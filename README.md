@@ -45,7 +45,7 @@ npm run build:linux
 Tomar encuestas que requiere dependencias de openjdk-8u402-b06, bapu, docker y de contar con un runtime de mulesoft en el directorio de la ejecución.
 ```bash
 muldok [puerto de escucha http, si se omite por default es 3000]
-Iniciando MulDok v1.0.42404202
+Iniciando MulDok v1.0.42024042.0457
 Validando Registro...    OK
 Validando Directorios... OK
 Validando openJDK...     OK
