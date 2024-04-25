@@ -46,10 +46,10 @@ Tomar encuestas que requiere dependencias de openjdk-8u402-b06, bapu, docker y d
 ```bash
 muldok [puerto de escucha http, si se omite por default es 3000]
 Iniciando MulDok v1.0.42404202
-Validando Registro... OK
+Validando Registro...    OK
 Validando Directorios... OK
-Validando openJDK...  OK
-Iniciando BaPu... OK
-Validando Docker...OK
+Validando openJDK...     OK
+Iniciando BaPu...        OK
+Validando Docker...      OK
 MulDok en http://localhost:3000/muldok/app/
 ```
