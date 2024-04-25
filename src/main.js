@@ -7,7 +7,7 @@ const fs = require('fs');
 const os = require('os');
 
 const app = express();
-const version = "v1.0.42024042.0457";
+const version = "v1.0.42024042.1812";
 const portBaPu = process.argv.length < 3?3000:process.argv[2];
 const port = parseInt(portBaPu) + 1;
 const appName = "muldok";
