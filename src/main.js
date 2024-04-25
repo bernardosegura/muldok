@@ -7,7 +7,7 @@ const fs = require('fs');
 const os = require('os');
 
 const app = express();
-const version = "v1.0.42404202";
+const version = "v1.0.42024042.0457";
 const portBaPu = process.argv.length < 3?3000:process.argv[2];
 const port = parseInt(portBaPu) + 1;
 const appName = "muldok";
@@ -52,7 +52,7 @@ if (fs.existsSync("apiReg.json")) {
 } else {
   fs.writeFile("apiReg.json", JSON.stringify(configPorts),(e)=>{});
 }
-process.stdout.write(' \x1b[32mOK\x1b[0m ');
+process.stdout.write('    \x1b[32mOK\x1b[0m ');
 process.stdout.write('\nValidando Directorios.');
 if(!fs.existsSync(jarUP)) {
 	  fs.mkdirSync(jarUP, { recursive: true });	  
@@ -66,11 +66,11 @@ process.stdout.write('.');
 process.stdout.write(' \x1b[32mOK\x1b[0m ');
 process.stdout.write(`\nValidando openJDK... `);
 if(!fs.existsSync("openjdk-8u402-b06.zip")) {
-	console.error(`\x1b[31mNo se encontro el archivo openjdk-8u402-b06.zip\x1b[0m`);
+	console.error(`    \x1b[31mNo se encontro el archivo openjdk-8u402-b06.zip\x1b[0m`);
 	process.exit(0);		
 }
 
-process.stdout.write(' \x1b[32mOK\x1b[0m ');
+process.stdout.write('    \x1b[32mOK\x1b[0m ');
 process.stdout.write(`\nIniciando BaPu... `);
 initBaPu(bapu);
 
@@ -80,12 +80,12 @@ function initBaPu(bapu){
 
 	childProcess.stdout.on('data', (data) => {
 	   if(data.includes("BaPu escuchando en")){
-	   		process.stdout.write('\x1b[32mOK\x1b[0m \nValidando Docker...');
+	   		process.stdout.write('       \x1b[32mOK\x1b[0m \nValidando Docker...');
 	   		const dockerProcess = exec("docker -v");
 
 			dockerProcess.stdout.on('data', (data) => {
 					if(data.includes("Docker version")){
-						process.stdout.write('\x1b[32mOK\x1b[0m \n');
+						process.stdout.write('      \x1b[32mOK\x1b[0m \n');
 				   		app.listen(port,() => {
 						  console.log(`MulDok en \x1b[34mhttp://localhost:${portBaPu}/${appName}/app/\x1b[0m`);
 						});
@@ -93,7 +93,7 @@ function initBaPu(bapu){
 			});
 
 			dockerProcess.stderr.on('data', (data) => {
-			  console.error(`\x1b[31m${data}\x1b[0m`);
+			  console.error(`      \x1b[31m${data}\x1b[0m`);
 			  //console.log("Terminar proceso: "+ bapu + " manualmente");
 			  process.exit(0);
 			});
@@ -101,7 +101,7 @@ function initBaPu(bapu){
 	});
 
 	childProcess.stderr.on('data', (data) => {
-	  console.error(`\x1b[31m${data}\x1b[0m`);
+	  console.error(`       \x1b[31m${data}\x1b[0m`);
 	});
 
 	childProcess.on('close', (code) => {
